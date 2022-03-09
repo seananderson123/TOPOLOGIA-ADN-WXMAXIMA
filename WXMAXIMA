@@ -1,0 +1,24 @@
+/*Con esto vamos a mostrar dos helices y algunas uniones que nos daran una imagen del ADN*/
+a1(t):=[cos(t),sin(t),t]$
+a2(t):=[cos(t-%pi),sin(t-%pi),t]$
+pa1:create_list([a1(t)[1],a1(t)[2],a1(t)[3]],t,-5,5)$
+pa2:create_list([a2(t)[1],a2(t)[2],a2(t)[3]],t,-5,5)$
+pa3:create_list(points([pa1[i],pa2[i]]),i,1,length(pa1))$
+wxdraw3d(
+    line_width=5,
+    proportional_axes=xyz,
+    nticks=2500,
+    parametric(a1(t)[1],a1(t)[2],a1(t)[3],t,-5,5),
+    color=red,
+    parametric(a2(t)[1],a2(t)[2],a2(t)[3],t,-5,5),
+    point_size=3,
+    color=black,
+    point_type=filled_circle,
+    points(pa1),
+    color=green,
+    point_type=filled_circle,
+    points(pa2),
+    point_size=1,
+    points_joined=true,
+    pa3
+)$
